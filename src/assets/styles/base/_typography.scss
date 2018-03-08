@@ -1,0 +1,40 @@
+// Import fonts
+
+/* sass-lint:disable max-line-length no-duplicate-properties indentation */
+@font-face {
+  font-family: 'DIN';
+  src: url('./../fonts/din.eot');
+  src: url('./../fonts/din.eot?#iefix') format('embedded-opentype'),
+       url('./../fonts/din.woff2') format('woff2'),
+       url('./../fonts/din.woff') format('woff'),
+       url('./../fonts/din.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'DIN';
+  src: url('./../fonts/dinbold.eot');
+  src: url('./../fonts/dinbold.eot?#iefix') format('embedded-opentype'),
+       url('./../fonts/dinbold.woff2') format('woff2'),
+       url('./../fonts/dinbold.woff') format('woff'),
+       url('./../fonts/dinbold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+}
+/* sass-lint:enable max-line-length no-duplicate-properties indentation */
+
+html {
+  font-size: calc(1em * .625);
+}
+
+body {
+  /* sass-lint:disable-block no-vendor-prefixes */
+  font: 1.4rem / 1.5 $ff-default;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  @include mq('s') {
+    font-size: 1.6rem;
+  }
+}

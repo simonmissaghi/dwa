@@ -1,0 +1,5 @@
+@if $env != 'production' {
+  // show all breakpoints
+  $mq-show-breakpoints: map-keys($mq-breakpoints);
+  @include mq-show-breakpoints($mq-show-breakpoints);
+}
