@@ -1,7 +1,7 @@
 import WebFont from 'webfontloader';
 
-// import { qs } from 'utils/dom';
-// import App from 'components/App';
+import { qs } from 'utils/dom';
+import App from 'components/App';
 
 class Dwa {
   static start() {
