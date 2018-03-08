@@ -1,0 +1,297 @@
+$btn-duration: .35s;
+
+// End
+.panel-end {
+  @extend %text-center;
+
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem !important; // sass-lint:disable-line no-important
+  padding-right: 2rem !important; // sass-lint:disable-line no-important
+  padding-left: 2rem !important; // sass-lint:disable-line no-important
+
+  @include mq('xxs', 'xs') {
+    padding-bottom: 2rem !important; // sass-lint:disable-line no-important
+  }
+}
+
+.panel-end__title {
+  @extend %fw-normal;
+
+  margin-bottom: 0;
+  color: $white;
+  font-family: $ff-alt;
+  font-size: 2.4rem;
+  line-height: 1.1;
+
+  @media (min-height: 768px) {
+    margin-bottom: 2rem;
+  }
+
+  @include mq('xs') {
+    font-size: 2.6rem;
+  }
+
+  @include mq('s') {
+    font-size: 3.2rem;
+  }
+
+  @include mq('l') {
+    font-size: 3.6rem;
+  }
+
+  strong {
+    @extend %fw-normal;
+
+    display: block;
+    color: $c-red;
+    font-family: $ff-default;
+    font-size: 3.6rem;
+
+    @include mq('xs') {
+      font-size: 4.8rem;
+    }
+
+    @include mq('s') {
+      font-size: 6.4rem;
+    }
+  }
+}
+
+.panel-end__content {
+  position: relative;
+  max-width: 32rem;
+  margin-bottom: 1rem;
+  color: $c-blue;
+
+  @media (min-height: 768px) {
+    margin-bottom: 4rem;
+  }
+
+  @include mq('xs') {
+    margin-bottom: 2rem;
+  }
+
+  @include mq('m') {
+    max-width: 48rem;
+  }
+}
+
+.panel-end__content__list {
+  @extend %list-nostyle;
+
+  margin-bottom: .5rem;
+
+  @include mq('xs') {
+    margin-bottom: 1rem;
+  }
+
+  @include mq('m') {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.panel-end__content__item {
+  position: relative;
+  margin-bottom: .25rem;
+
+  @include mq('xs') {
+    margin-bottom: .5rem;
+  }
+
+  @include mq('m') {
+    width: calc(50% - .5rem);
+    margin-bottom: 1rem;
+  }
+
+  input {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  label {
+    position: relative;
+    display: block;
+    border: 1px solid $c-gray;
+    line-height: 2;
+    transition: color $btn-duration;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten($c-blue, 20%);
+    }
+
+    @include mq('xs') {
+      line-height: 2.4;
+    }
+
+    @include mq('m') {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border: 1px solid transparent;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover::before {
+      border-top-color: rgba($c-blue, .5);
+      border-right-color: rgba($c-blue, .5);
+      transition:
+        width $btn-duration ease-out, // sass-lint:disable-line indentation
+        height $btn-duration * .25 ease-out $btn-duration; // sass-lint:disable-line indentation
+    }
+
+    &:hover::after {
+      border-bottom-color: rgba($c-blue, .5);
+      border-left-color: rgba($c-blue, .5);
+      transition:
+        height $btn-duration * .25 ease-out, // sass-lint:disable-line indentation
+        width $btn-duration ease-out $btn-duration * .25; // sass-lint:disable-line indentation
+    }
+  }
+
+  :checked + label {
+    box-shadow:
+      0 0 24px 1px rgba(lighten($c-gray, 15%), .75), // sass-lint:disable-line indentation
+      inset 0 0 12px 0 rgba(lighten($c-gray, 15%), .5); // sass-lint:disable-line indentation
+    text-shadow: 0 0 3px $c-blue;
+
+    &::before,
+    &::after {
+      width: 100%;
+      height: 100%;
+      border-color: rgba($c-blue, .25);
+    }
+  }
+}
+
+.panel-end__content__go {
+  .no-js & {
+    display: none;
+  }
+
+  &:disabled {
+    opacity: .5;
+  }
+}
+
+button,
+.panel-end__content__go,
+.panel-end__content__email,
+.panel-end__content__submit {
+  overflow: hidden;
+  padding-right: 0;
+  padding-left: 0;
+  line-height: 2;
+
+  @include mq('xs') {
+    line-height: 2.4;
+  }
+}
+
+button {
+  position: relative;
+  border: 0;
+  background: none;
+  color: $c-blue;
+  text-transform: uppercase;
+
+  .backgroundcliptext.desktop & {
+    background: linear-gradient(to right, $c-blue 0%, $c-pink 100%);
+    -webkit-background-clip: text; // sass-lint:disable-line no-vendor-prefixes
+    -webkit-text-fill-color: transparent; // sass-lint:disable-line no-vendor-prefixes
+  }
+
+  .backgroundcliptext.desktop.safari &,
+  .backgroundcliptext.desktop.edge & {
+    -webkit-text-fill-color: $c-blue; // sass-lint:disable-line no-vendor-prefixes
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(to right, $c-blue 0%, $c-pink 100%);
+  }
+}
+
+.panel-end__content__email,
+.panel-end__content__submit {
+  .js & {
+    width: 0;
+  }
+
+  .ie11 & {
+    height: 4rem;
+  }
+}
+
+.panel-end__content__email {
+  border: 0;
+  border-bottom: 1px solid $c-gray;
+  background: none;
+  color: $white;
+}
+
+// sass-lint:disable no-vendor-prefixes, no-important
+input:-webkit-autofill {
+  background-color: $c-blue !important;
+  color: $white !important;
+}
+
+.panel-end__content__message {
+  @extend %text-center;
+
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  width: 100%;
+  border: 1px solid $c-gray;
+  padding: 4rem;
+  background-color: $c-blue-darker;
+  color: $white;
+  opacity: 0;
+  visibility: hidden;
+
+  strong {
+    display: block;
+    margin-bottom: 2rem;
+    color: $c-red;
+    font-size: 2.4rem;
+  }
+
+  button {
+    display: inline-block;
+    margin-top: 2rem;
+  }
+}
+
+.panel-end__share {
+  width: 16rem;
+
+  @include mq('s') {
+    width: auto;
+  }
+}

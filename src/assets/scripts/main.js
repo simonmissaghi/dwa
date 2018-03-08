@@ -1,59 +1,54 @@
-function wait1() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('1 second');
-      resolve();
-    }, 1000);
-  });
-}
+import WebFont from 'webfontloader';
 
-function wait2() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('2 second');
-      resolve();
-    }, 2000);
-  })
-}
+// import { qs } from 'utils/dom';
+// import App from 'components/App';
 
-function ready() {
-  console.log('let\'s go');
-}
-
-Promise
-  .all([
-    wait1(),
-    wait2(),
-  ])
-  .then(ready);
-
-
-class Bootstrap {
-  // Start application
+class Dwa {
   static start() {
-
+    return new Dwa();
   }
 
   constructor() {
-    // Attendre la résolution de dom / font
-    // Then, ready
+    Promise
+      .all([
+        Dwa.domReady(),
+        Dwa.fontReady(),
+        Dwa.waitReady(),
+      ])
+      .then(this.ready.bind(this));
   }
 
-  // Wait for DOM content loaded
-  domReady() {
-    // Return promise
+  static domReady() {
+    return new Promise(resolve => {
+      document.addEventListener('DOMContentLoaded', resolve);
+    });
   }
 
-  // Wait for Google fonts loaded
-  fontReady() {
-    // Return promise
+  static fontReady() {
+    return new Promise(resolve => {
+      WebFont.load({
+        google: {
+          families: ['Satisfy'],
+        },
+        active: resolve,
+        inactive: resolve,
+      });
+    });
   }
 
-  // Ready, show page
+  static waitReady() {
+    return new Promise(resolve => {
+      setTimeout(resolve, 5000);
+    });
+  }
+
   ready() {
-    document.documentElement.classList.add('ready');
+    console.log('🚀 DWA', this);
+    document.querySelector('.loader').remove();
+    // DEV
+    // -> qs('.loader').remove();
+    document.documentElement.classList.add('is-ready');
   }
 }
 
-// Usage
-Bootstrap.start();
+Dwa.start();

@@ -1,0 +1,46 @@
+.epic {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  opacity: .35;
+
+  @include mq('s') {
+    right: 2rem;
+    bottom: 2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    transition: 7s fill linear;
+    will-change: fill;
+
+    .is-home & {
+      fill: $c-pink;
+    }
+
+    .is-brain & {
+      fill: $c-brain;
+    }
+
+    .is-gloves & {
+      fill: $c-gloves;
+    }
+
+    .is-stadium & {
+      fill: $c-stadium;
+    }
+
+    .is-lsm & {
+      fill: $c-lsm;
+    }
+
+    .is-end & {
+      fill: $c-red;
+    }
+  }
+}

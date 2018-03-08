@@ -1,0 +1,90 @@
+.ui,
+[class*='ui--'] {
+  position: absolute;
+  bottom: 3rem;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: opacity .5s $ease-in-out-quart;
+  will-change: opacity;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  &.is-home {
+    bottom: 6rem;
+  }
+
+  svg {
+    // width: auto;
+    height: 3.2rem;
+  }
+
+  hr {
+    display: block;
+    width: .1rem;
+    height: 3.2rem;
+    margin: 0 1rem;
+    border: 0;
+    background-color: $c-blue-dark;
+  }
+}
+
+.ui-label {
+  @extend %text-center;
+  @extend %text-uppercase;
+
+  display: none;
+  width: 100%;
+  margin-top: 1rem;
+  color: $c-pink;
+  font-size: 1.1rem;
+
+  .is-home & {
+    display: block;
+  }
+}
+
+.ui__input,
+.ui__touch {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ui__input {
+  display: none;
+
+  .no-touchevents & {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  svg {
+    &:first-child {
+      width: 3.9rem;
+    }
+
+    &:last-child {
+      width: 1.9rem;
+    }
+  }
+}
+
+.ui__touch {
+  display: none;
+
+  .touchevents & {
+    display: flex;
+    margin: 0 1rem;
+  }
+
+  svg {
+    &:first-child {
+      width: 2.8rem;
+    }
+  }
+}

@@ -1,0 +1,141 @@
+.panel,
+[class*='panel--'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 4rem;
+
+  .js & {
+    @include get-all-space;
+
+    visibility: hidden;
+
+    &.is-active {
+      visibility: visible;
+    }
+  }
+}
+
+// Illustrations
+[class*='panel--'][class*='--grid'] {
+  @include mq('xxs', 'm') {
+    align-items: flex-end;
+    padding-top: 8rem;
+    padding-bottom: 15vh;
+  }
+
+  @include mq('m') {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    .panel-inner {
+      grid-row-start: 2;
+      grid-row-end: span 1;
+    }
+
+    &:nth-child(even) {
+      grid-template-columns: 1fr 42rem;
+      // grid-template-areas: 'spacer right';
+
+      .panel-inner {
+        // grid-area: right;
+        grid-column-start: 2;
+        grid-column-end: span 1;
+      }
+    }
+
+    &:nth-child(odd) {
+      padding-left: 10rem;
+      grid-template-columns: 42rem 1fr;
+      grid-template-areas: 'left spacer';
+
+
+      .panel-inner {
+        // grid-area: left;
+        grid-column-start: 1;
+        grid-column-end: span 1;
+      }
+    }
+  }
+
+  @include mq('l') {
+    grid-template-columns: 1fr 40rem 1fr 40rem 1fr !important; // sass-lint:disable-line no-important
+    // grid-template-areas: 'spacer1 left spacer2 right spacer3' !important; // sass-lint:disable-line no-important
+
+    &:nth-child(even) {
+      .panel-inner {
+        grid-column-start: 4;
+        grid-column-end: span 1;
+      }
+    }
+
+    &:nth-child(odd) {
+      padding-left: 6rem;
+
+      .panel-inner {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+      }
+    }
+  }
+
+  @include mq('xl') {
+    &:nth-child(odd) {
+      padding-left: 0;
+    }
+  }
+}
+
+.panel__title {
+  @extend %fw-normal;
+  @extend %text-uppercase;
+
+  max-width: 40rem;
+  font-size: 3.2rem;
+  line-height: 1;
+
+  strong {
+    display: inline-block;
+  }
+
+  @include mq('s') {
+    font-size: 4.8rem;
+  }
+
+  [data-panel='brain'] & {
+    color: $c-brain-dark;
+
+    strong {
+      color: $c-brain;
+    }
+  }
+
+  [data-panel='gloves'] & {
+    color: $c-gloves-dark;
+
+    strong {
+      color: $c-gloves;
+    }
+  }
+
+  [data-panel='stadium'] & {
+    color: $c-stadium-dark;
+
+    strong {
+      color: $c-stadium;
+    }
+  }
+
+  [data-panel='lsm'] & {
+    color: $c-lsm-dark;
+
+    strong {
+      color: $c-lsm;
+    }
+  }
+}
+
+.panel__content {
+  max-width: 32rem;
+}

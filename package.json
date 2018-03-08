@@ -6,7 +6,7 @@
     "lint:sass": "sass-lint -v",
     "lint:js": "eslint src/**/assets/scripts/**/*.js",
     "server": "http-server ./dist",
-    "start": "gulp"
+    "start": "npm run server & gulp & wait"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",
@@ -38,6 +38,7 @@
     "require-dir": "^1.0.0",
     "vinyl-named": "^1.1.0",
     "vinyl-source-stream": "^2.0.0",
+    "webfontloader": "^1.6.28",
     "webpack": "^4.0.1",
     "webpack-dev-middleware": "^3.0.0",
     "webpack-stream": "^4.0.2",

@@ -1,0 +1,19 @@
+.notice,
+[class*='notice--'] {
+  @extend %text-center;
+
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  display: none;
+  width: 100%;
+  font-size: 1rem;
+
+  .is-fallback & {
+    display: block;
+  }
+
+  @include mq('xs') {
+    font-size: 1.2rem;
+  }
+}

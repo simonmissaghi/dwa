@@ -1,0 +1,89 @@
+.pagination {
+  @extend %fw-bold;
+
+  position: absolute;
+  top: 50%;
+  left: 5rem;
+
+  @include mq('xxxs', 's') {
+    display: none;
+  }
+
+  @include mq('m', 'l') {
+    left: 4rem;
+  }
+
+  @include mq('xl') {
+    left: 6rem;
+  }
+}
+
+.pagination__current-outer {
+  overflow: hidden;
+  transform: skewY(-45deg);
+}
+
+.pagination__current-inner {
+  transform: skewY(45deg);
+
+  > * {
+    padding: 2rem 0;
+  }
+}
+
+.pagination__prev {
+  position: absolute;
+  transform: translateY(-100%);
+}
+
+.pagination__next {
+  position: absolute;
+}
+
+.pagination__max {
+  position: relative;
+  padding: 2rem 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -250%;
+    width: 600%;
+    height: 2px;
+    background-color: $c-pink;
+    transition: background-color 3s linear 1s;
+    transform: rotate(-45deg);
+
+    .is-home & {
+      background-color: $c-pink;
+    }
+
+    .is-brain & {
+      background-color: $c-brain;
+    }
+
+    .is-gloves & {
+      background-color: $c-gloves;
+    }
+
+    .is-stadium & {
+      background-color: $c-stadium;
+    }
+
+    .is-lsm & {
+      background-color: $c-lsm;
+    }
+
+    .is-end & {
+      background-color: $c-red;
+    }
+  }
+}
+
+.pagination__zero {
+  position: absolute;
+  top: 0;
+  left: -.75em;
+  padding: 2rem 0;
+}

@@ -1,0 +1,57 @@
+.share,
+[class*='share--'] {
+  display: flex;
+  margin-bottom: 1rem;
+
+  @include mq('xs') {
+    margin-bottom: 3rem;
+  }
+
+  @include mq('s') {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    flex-direction: column;
+    margin-bottom: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.share__title {
+  @extend %text-uppercase;
+
+  margin: 0 3.6rem 0 0;
+  font-size: 1.3rem;
+
+  @include mq('s') {
+    margin: 0;
+    transform-origin: 100% 0;
+    transform: rotate(90deg) translateY(50%);
+  }
+}
+
+.share__list {
+  @extend %list-nostyle;
+
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  @include mq('s') {
+    flex-direction: column;
+  }
+}
+
+.share__item {
+  @include mq('s') {
+    margin-bottom: 2rem;
+  }
+}
+
+.share__item__link {
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: $white;
+  }
+}

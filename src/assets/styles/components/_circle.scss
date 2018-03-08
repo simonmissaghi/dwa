@@ -1,0 +1,84 @@
+$circle-duration: .35s;
+
+.halfclip,
+[class*='halfclip--'] {
+  position: absolute;
+  z-index: layer(highest);
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+}
+
+[class*='halfclip--'][class*='--right'] {
+  transform-origin: right 50%;
+  transform: rotate(180deg);
+}
+
+.halfcircle {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  border: solid 1px transparent;
+  border-top-color: $c-pink;
+  border-left-color: $c-pink;
+  border-radius: 50%;
+
+  .is-home & {
+    border-top-color: $c-pink;
+    border-left-color: $c-pink;
+  }
+
+  .is-brain & {
+    border-top-color: $c-brain;
+    border-left-color: $c-brain;
+  }
+
+  .is-gloves & {
+    border-top-color: $c-gloves;
+    border-left-color: $c-gloves;
+  }
+
+  .is-stadium & {
+    border-top-color: $c-stadium;
+    border-left-color: $c-stadium;
+  }
+
+  .is-lsm & {
+    border-top-color: $c-lsm;
+    border-left-color: $c-lsm;
+  }
+
+  .is-end & {
+    border-top-color: $c-red;
+    border-left-color: $c-red;
+  }
+}
+
+.clipped {
+  width: 200%;
+  transform: rotate(135deg);
+  transition: transform $circle-duration / 2 linear;
+
+  :hover > * > & {
+    transform: rotate(-45deg);
+  }
+
+  [class*='halfclip--'][class*='--left'] & {
+    transition-delay: $circle-duration / 2;
+
+    :hover > & {
+      transition-delay: 0s;
+    }
+  }
+
+  [class*='halfclip--'][class*='--right'] & {
+    transition-delay: 0s;
+
+    :hover > & {
+      transition-delay: $circle-duration / 2;
+    }
+  }
+}
+
